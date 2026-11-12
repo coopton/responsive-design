@@ -1,31 +1,31 @@
 html {
-   font-family: sans-serif;
-   line-height: 1.3;
+  font-family: sans-serif;
+  line-height: 1.3;
 }
 
 header {
-   background-color: #c0cac9;
-   padding: .5rem;
-   text-align: center;
+  background-color: #c0cac9;
+  padding: .5rem;
+  text-align: center;
 }
 
 h1 {
-   font-size: 2rem;
+  font-size: 2rem;
 }
 
 h2 {
-   font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .box {
-   font-size: 125%;
-   padding: 1.5rem 2.5rem;
-   border: 1px solid #cccccc;
-   background-color: #585858;
-   color: white;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  font-size: 125%;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid #cccccc;
+  background-color: #585858;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -35,38 +35,45 @@ h2 {
 /* Start here. Add your desktop styles to the rules below. */
 
 body {
-   /* Add a background color for the desktop layout. */
+  background-color: green;
 }
 
 .wrapper {
-   background-color: #f4f4f4;
-   border: 2px solid silver;
-   padding: 0 0 2rem 0;
-   box-shadow: 2px 2px 7px black;
-   margin: 1.5rem auto;
+  background-color: #f4f4f4;
+  border: 2px solid silver;
+  padding: 0 0 2rem 0;
+  box-shadow: 2px 2px 7px black;
+  margin: 1.5rem auto;
+  max-width: 1000px;
 
-   /* Set a maximum width for the wrapper. */
+  /* Set a maximum width for the wrapper. */
+
 }
 
 main {
-   margin: 1rem;
-   padding: 1rem;
-   border-radius: 2rem;
-   background-color: #cccccc;
-
-   /* Use Flexbox to arrange the three boxes in a row. */
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: #cccccc;
+  display: flex;
+  justify-content: space-around;
+  /* Use Flexbox to arrange the three boxes in a row. */
 }
 
 .gallery {
-   padding: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
 
-   /* Use Grid to create four columns with space between them. */
+  /* Use Grid to create four columns with space between them. */
 }
 
 .gallery img {
-   border: 2px solid black;
+  border: 2px solid black;
+  max-width: 100%;
 
-   /* Let each image shrink to fit its gallery column. */
+  /* Let each image shrink to fit its gallery column. */
 }
 
 
@@ -75,6 +82,26 @@ main {
 
 /* Add the media query for viewport widths below 768px here.
    Inside it, change the background color and build the two-column layouts. */
+@media (width < 768px) {
+  body {
+    background-color: palevioletred;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .box:last-of-type {
+    grid-column: span 2;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 
 
 /* PHONE Media Query
@@ -83,3 +110,27 @@ main {
 /* Add the media query for viewport widths below 480px here.
    Inside it, change the background color and stack the boxes and images.
    Keep this query after the tablet query so the phone rules can override it. */
+@media (width < 480px) {
+  body {
+    background-color: paleturquoise;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .box {
+    font-size: 175%;
+    border-radius: 2rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 1rem 2rem;
+    background-color: cadetblue;
+  }
+  .wrapper {
+    margin: 0;
+  }
+}
